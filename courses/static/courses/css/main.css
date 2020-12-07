@@ -1,0 +1,72 @@
+body, html {
+    background-image: url("/static/courses/images/doodle.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+    margin: 0;
+}
+
+.li {
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 5font-size:20pxpx #000;
+    margin-top: 30px;
+    border: 1px solid #444;
+    text-align: center;
+    display: block;
+    color: #444;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.li:hover{
+   transition: 100ms;
+  transform: scale(1.1);
+  transition: all ease 1000ms;
+}
+
+.setup_image {
+    background-image: url("/static/courses/images/setup.jpeg");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.science_image {
+    background-image: url("/static/courses/images/science.jpeg");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.design_image {
+    background-image: url("/static/courses/images/design.jpeg");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.arts_image {
+    background-image: url("/static/courses/images/arts.jpeg");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#wrap {
+   min-height: 100%;
+
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+  margin-bottom: -50px;
+}
+
+
+
+
+
+
+/* Set the fixed height of the footer here */
+#push, #footer {
+    height: 10px;
+    width: 100%;
+}
+
+
