@@ -60,7 +60,7 @@ class Index(View):
             else:
                 email_from = 'test@email.com'
             recipient_list = [email,]
-            send_mail(subject, message, email_from, recipient_list, fail_silently=True)
+            send_mail(subject, message, email_from, recipient_list, )
             messages.success(request, f'Thank you {name.capitalize()}')
             return redirect('/#news')
         return render(request, 'index.html', context)
