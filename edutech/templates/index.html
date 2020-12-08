@@ -95,42 +95,44 @@
             {% endfor %}
         {% endif %}
 
-        <h3 style="font-weight:bold" class="pt-3 bg-light" >News Letter</h3>
-        <form class="form-inline text-center pt-3 bg-light" action="/#news"  method="post">
+        <h3 style="font-weight:bold" class="pt-3 bg-light text-center" >News Letter</h3>
+        <form class=" text-center pt-3 bg-light" action="/#news"  method="post">
             {% csrf_token %}
-            <div class="form-group mr-2 mt-2">
-                <label class="mr-1" for="id_email">Name</label>
+            <div class="row ">
+                <div class="col-md-6 mx-auto">
+                    <div class="form-group mr-2  mt-2">
 
-                {{form.name}}
 
-                <div  class="invalid-feedback">
-                    Please choose a username.
-                </div>
+                        {{form.name}}
 
+                        <div  class="invalid-feedback">
+                            Please choose a username.
+                        </div>
+
+                    </div>
+                        {% if form.name.errors %}
+                            {% for error in form.name.errors %}
+                              <p  class="alert alert-success mr-2 ">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    <div class="form-group mr-2 mt-2">
+
+
+                        {{form.email}}
+
+                        <div  class="invalid-feedback">
+                            Please choose a valid email.
+                        </div>
+                    </div>
+                        {% if form.email.errors %}
+                            {% for error in form.email.errors %}
+                                <p  class="alert alert-success mr-2">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    <button type="submit" class="btn mt-2" style="background:gold; color:black">Send</button>
+                    </div>
             </div>
-                {% if form.name.errors %}
-                    {% for error in form.name.errors %}
-                      <p  class="alert alert-success mr-2 ">{{ error }}</p>
-                    {% endfor %}
-                {% endif %}
-            <div class="form-group mr-2 mt-2">
-                <label class="mr-1" for="id_name">Email</label>
-
-                {{form.email}}
-
-                <div  class="invalid-feedback">
-                    Please choose a valid email.
-                </div>
-            </div>
-                {% if form.email.errors %}
-                    {% for error in form.email.errors %}
-                        <p  class="alert alert-success mr-2">{{ error }}</p>
-                    {% endfor %}
-                {% endif %}
-
-
-            <button type="submit" class="btn mt-2" style="background:gold; color:black">Sign in</button>
-    </form>
+        </form>
     </div>
 
     <script type="text/javascript">
