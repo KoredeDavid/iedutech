@@ -18,8 +18,12 @@
                         {% convert category as setup %}
                         {% if setup == 'Programming' %}
                             <div class="card shadow-lg  pt-5 pb-5 setup_image card-image " >
-                        {% else %}
+                        {% elif setup == 'Crafts & Arts' %}
                             <div class="card shadow-lg  pt-5 pb-5 arts_image card-image " >
+                        {% elif setup == 'Science' %}
+                            <div class="card shadow-lg  pt-5 pb-5 science_image card-image " >
+                        {% elif setup == 'Graphics' %}
+                            <div class="card shadow-lg  pt-5 pb-5 design_image card-image " >
                         {% endif %}
                             <div class="card-body ml-3 mr-3">
                                 <h3 class="card-title pb-4 pt-4 text-center" style="background: rgba(0, 0, 0, 0.6); color:gold"><b>{{category}}</b></h3>
@@ -41,17 +45,22 @@
                 {% endif %}
         {% endfor %}
     </div>
+
     <br>
     <div class="row justify-content-around" style="background-color:white">
         {% for category in categories %}
             {% two_or_three categories category as two_or_three %}
                 {% if two_or_three %}
                     <div class="col-md-5 mb-5 " >
-                        {% convert category as design %}
-                        {% if design == 'Graphics' %}
-                            <div class="card shadow-lg  pt-5 pb-5 design_image card-image " >
-                        {% else %}
+                       {% convert category as setup %}
+                        {% if setup == 'Programming' %}
+                            <div class="card shadow-lg  pt-5 pb-5 setup_image card-image " >
+                        {% elif setup == 'Crafts & Arts' %}
+                            <div class="card shadow-lg  pt-5 pb-5 arts_image card-image " >
+                        {% elif setup == 'Science' %}
                             <div class="card shadow-lg  pt-5 pb-5 science_image card-image " >
+                        {% elif setup == 'Graphics' %}
+                            <div class="card shadow-lg  pt-5 pb-5 design_image card-image " >
                         {% endif %}
                             <div class="card-body ml-3 mr-3">
                                 <h3 class="card-title button-four pt-4 text-center pb-4" style="background: rgba(0, 0, 0, 0.6); color:gold" ><b>{{category}}</b></h3>
