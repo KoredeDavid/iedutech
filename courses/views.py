@@ -9,20 +9,9 @@ from django.views import View
 from .forms import NewsLetterForm
 from .models import Category, Course
 
-"""
-def test_session(request):
-    request.session.set_test_cookie()
-    return HttpResponse('Testing session cookie')
 
-
-def test_delete(request):
-    if request.session.test_cookie_worked():
-        request.session.delete_test_cookie()
-        response = HttpResponse('Cookie test passed')
-    else:
-        response = HttpResponse('Cookie test failed')
-    return response
-"""
+def test(request):
+    return render(request, 'test.html',)
 
 
 class Index(View):
@@ -59,12 +48,11 @@ class Index(View):
                 email_from = os.environ.get('EMAIL_HOST_USER', '')
             else:
                 email_from = 'test@email.com'
-            recipient_list = [email,]
+            recipient_list = [email, ]
             send_mail(subject, message, email_from, recipient_list, )
             messages.success(request, f'Thank you {name.capitalize()}')
             return redirect('/#news')
         return render(request, 'index.html', context)
-
 
 
 class Courses(View):
@@ -139,3 +127,6 @@ class Favourites(View):
         return HttpResponse('Success')
 
 
+class Test(View):
+    def get(self, request):
+        return render(request, 'test.html')

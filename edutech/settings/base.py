@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'courses',
+    'sayches',
 ]
 
 MIDDLEWARE = [
@@ -45,7 +46,7 @@ ROOT_URLCONF = 'edutech.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["edutech/templates/"],
+        'DIRS': [os.path.join(BASE_DIR, "templates/")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -100,6 +101,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'courses.CustomUser'
 
