@@ -38,6 +38,12 @@ document.addEventListener("DOMContentLoaded", function(){
 
     if(el_autohide){
         var last_scroll_top = 0;
+        let scroll_top = window.scrollY;
+
+
+        if (scroll_top !== 0) {
+            el_autohide.style.backgroundColor = 'white'
+        }
         window.addEventListener('scroll', function() {
             let scroll_top = window.scrollY;
 
@@ -68,7 +74,16 @@ document.addEventListener("DOMContentLoaded", function(){
 
         });
         bar.addEventListener('click', function () {
-            nav.classList.toggle('collapse-bg')
+            if (nav.classList.contains('collapse-bg')){
+                nav.classList.remove('collapse-bg')
+                console.log('removed')
+            }
+            else{
+                nav.classList.add('collapse-bg')
+                console.log('add')
+            }
         })
     }
 });
+
+// nav.classList.toggle('collapse-bg')
