@@ -14,18 +14,19 @@
         <!-- MDB -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
         <link href="{% static '/courses/css/test.css' %}" rel="stylesheet">
+
+        <script type="text/javascript" src="{% static '/courses/js/test.js' %}"></script>
+        <script type="text/javascript" src="{% static '/courses/js/jquery-3.5.1.js' %}"></script>
+        <script type="text/javascript" src="{% static '/courses/js/bootstrap.min.js' %}"></script>
+        {#        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>#}
     </head>
 
-    <script type="text/javascript" src="{% static '/courses/js/test.js' %}"></script>
-    <script type="text/javascript" src="{% static '/courses/js/jquery-3.5.1.js' %}"></script>
-    <script type="text/javascript" src="{% static '/courses/js/bootstrap.min.js' %}"></script>
-    {#        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>#}
 
     <body>
 {#        <div class="position-fixed fixed-bottom mb-0 text-center alert alert-warning">This website is being updated. It will be back soon </div>#}
         <header class="header-gradient view d-flex align-items-center">
             {# Nav bar start #}
-            <nav class="autohide navbar navbar-expand-lg navbar-light mt-4  mx-auto  container rounded">
+            <nav class="autohide navbar navbar-expand-md navbar-light mt-4  mx-auto  container rounded">
                 <a class="navbar-brand text-dark font-weight-bold" href="#">Edutech</a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,19 +39,19 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="#">Link</a>
                         </li>
-                        <li class="nav-item ml-lg-3 ">
-                            <a class="nav-link  text-dark nav-dot" href="#">Link</a>
+                        <li class="nav-item ml-md-3 ">
+                            <a class="nav-link  text-dark nav-dot" href="#"><span class="text-success">Link</span></a>
                         </li>
-                        <li class="nav-item ml-lg-3">
+                        <li class="nav-item ml-md-3">
                             <a class="nav-link text-dark" href="#">Link</a>
                         </li>
-                        <li class="nav-item ml-lg-3">
+                        <li class="nav-item ml-md-3">
                             <a class="nav-link text-dark" href="#">Link</a>
                         </li>
-                        <li class="nav-item ml-lg-3">
+                        <li class="nav-item ml-md-3">
                             <a class="nav-link text-dark" href="#">Link</a>
                         </li>
-                        <li class="nav-item ml-lg-3" >
+                        <li class="nav-item ml-md-3" >
                             <a class="btn btn-warning"> Warning</a>
                         </li>
                     </ul>
@@ -60,7 +61,7 @@
 
             <div class="container pt-5">
                 <div class="row align-items-center justify-content-end">
-                    <div class="col-lg-6 text-center">
+                    <div class="col-md-6 text-center">
                         <h1 class="font-weight-bold mt-sm-5">Make purchases with our app </h1>
                         <hr>
                         <h6 class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellendus quasi fuga nesciunt
@@ -68,52 +69,55 @@
                             iste.</h6>
                         <a class="btn btn-warning"> Warning</a>
                     </div>
-                    <div class="col-lg-6 header-image">
+                    <div class="col-md-6 header-image">
                         <img src="https://ouch-cdn2.icons8.com/1dKnfM6sKzWVuW5vAb9afWnRxPL6L6idUzEn8sjmYmc/rs:fit:912:912/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvMzIy/LzE1YTY5YjYzLTFj/NjUtNGZhMi1hM2Uz/LTVjYTY5MTQzNjk3/Ni5zdmc.png" alt="" class="img-fluid">
+                        <span class="d-block float-right small font-italic">Illustration by <a href="https://icons8.com/illustrations/author/5c07e68d82bcbc0092519bb6">Icons 8</a> from <a href="https://icons8.com/illustrations">Ouch!</a></span>
                     </div>
                 </div>
             </div>
         </header>
 
+        {# Couses #}
         <section class="mt-4">
             <div class="container">
-                <h2 class="font-weight-bold d-inline">Popular Subjects</h2>
-                <span class="float-right text-warning">View All</span>
-                <div class="row mt-2 d-flex justify-content-center">
-                    <div class="mr-md-1 col-lg-2 subjects-card text-center pt-5 mb-md-2 ">
+                <h2 class="font-weight-bold">Popular Subjects</h2>
+                <div class="row mt-2 justify-content-around subjects">
+                    <div class="mr-md- col-sm-6 col-md-4 col-lg-2   subjects-card text-center pt-5 mb-md-2 ">
                         <h5 class="font-weight-normal">Maths</h5>
                         <i class="fas fa-ambulance d-block" style="font-size: 50px"></i>
                     </div>
-                    <div class="mr-md-1 col-lg-2 subjects-card text-center pt-5 mb-md-2 ">
+                    <div class="mr-md- col-sm-6 col-md-4 col-lg-2  subjects-card text-center pt-5 mb-md-2 ">
                         <h5 class="font-weight-normal">Chemistry</h5>
                         <i class="fas fa-atom d-block" style="font-size: 50px"></i>
                     </div>
-                    <div class="mr-md-1 col-lg-2 subjects-card text-center pt-5 mb-md-2 ">
+                    <div class="mr-md- col-sm-6 col-md-4 col-lg-2  subjects-card text-center pt-5 mb-md-2 ">
                         <h5 class="font-weight-normal">Maths</h5>
                         <i class="fas fa-ambulance d-block" style="font-size: 50px"></i>
                     </div>
-                    <div class="mr-md-1 col-lg-2 subjects-card text-center pt-5 mb-md-2 ">
+                    <div class="mr-md- col-sm-6 col-md-4 col-lg-2  subjects-card text-center pt-5 mb-md-2">
                         <h5 class="font-weight-normal">Maths</h5>
                         <i class="fas fa-ambulance d-block" style="font-size: 50px"></i>
                     </div>
-                    <div class="mr-md-1 col-lg-2 subjects-card text-center pt-5 mb-md-2 ">
+                    <div class="mr-md- col-sm-6 col-md-4 col-lg-2  subjects-card text-center pt-5 mb-md-2">
                         <h5 class="font-weight-normal">Maths</h5>
                         <i class="fas fa-ambulance d-block" style="font-size: 50px"></i>
                     </div>
-                    <div class="col-lg-2 subjects-card text-center pt-5 mb-md-2 ">
+                    <div class="col-sm-6 col-md-4 col-lg-2  subjects-card text-center pt-5 mb-md-2">
                         <h5 class="font-weight-normal">Maths</h5>
                         <i class="fas fa-ambulance d-block" style="font-size: 50px"></i>
                     </div>
                 </div>
+                <span class="d-lg-none d-block float-right text-warning">View All</span>
             </div>
 
             <div class="container pt-5">
-                <div class="row border border-primary d-flex align-items-center">
-                    <div class="col-lg-6 header-image border border-danger">
+                <div class="row d-flex align-items-center">
+                    <div class="col-md-6 header-image">
                         <img src="https://ouch-cdn2.icons8.com/blUtBGaYi6OyEcO77Rckq6lRzXbzUG5C5a2KJ02rMmc/rs:fit:978:912/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNTcy/Lzg4MWFmMjMyLWY3/ODUtNDIyZi1iM2Iy/LWQzYjAyMDc0YzM5/MS5wbmc.png" alt="" class="img-fluid">
+                        <span class="d-block float-left small font-italic">Illustration by <a href="https://icons8.com/illustrations/author/5c07e68d82bcbc0092519bb6">Icons 8</a> from <a href="https://icons8.com/illustrations">Ouch!</a></span>
                     </div>
 
-                    <div class="col-lg-6 border border-danger">
+                    <div class="col-md-6">
                         <h1 class="font-weight-bold mt-sm-5">Make purchases with our app </h1>
                         <h4 class="pitch-card d-flex align-items-center pl-4">Several Online Courses</h4>
                         <h4 class="pitch-card d-flex align-items-center pl-4">Several Online Courses</h4>
@@ -124,10 +128,11 @@
             </div>
 
             <div class="female-students position-relative d-flex align-items-center justify-content-center">
-                <div class="rounded-circle student d-flex align-items-center justify-content-center position-absolute bg-warning" style="top:70px; left: 70px">
+                <div class="rounded-circle student d-flex align-items-center justify-content-center position-absolute bg-warning" style="top:70px; left: 70px;">
                     <div class="rounded-circle student-child" style="background: whitesmoke"></div>
                 </div>
                 <div class="border border-primary rounded-circle student position-absolute shadow" style="top:75px; left: 400px"></div>
+                {#                <img src="https://cdn.pixabay.com/photo/2016/11/21/12/42/beard-1845166__340.jpg" class="border border-primary rounded-circle student position-absolute shadow"  alt="" style="top:75px; left: 400px">#}
                 <div class="border border-primary rounded-circle student position-absolute shadow" style="top:75px; right: 300px"></div>
 
                 <div class="rounded-circle student d-flex align-items-center justify-content-center position-absolute bg-success" style="bottom:75px; right: 40px">
@@ -145,9 +150,61 @@
                 </div>
             </div>
 
-
+            <div class="container py-5">
+                <div class="row align-items-center justify-content-end">
+                    <div class="col-md-6 text-center">
+                        <h1 class="font-weight-bold mt-sm-5">Make purchases with our app </h1>
+                        <hr>
+                        <h6 class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellendus quasi fuga nesciunt
+                            dolorum nulla magnam veniam sapiente, fugiat! Commodi sequi non animi ea dolor molestiae
+                            iste.</h6>
+                        <a class="btn btn-warning"> Meet All Experts</a>
+                    </div>
+                    <div class="col-md-6 header-image">
+                        <img src="https://ouch-cdn2.icons8.com/Co-9JYQIgeb9aS2Iu5HO4XpA5hReIz_RDqGZtp31HkA/rs:fit:784:399/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvODY4/LzE3OGRjMTFjLTEy/YjctNGUxZS1hY2E2/LTBhOTI2NTM5Nzlj/Ny5wbmc.png" alt="" class="img-fluid">
+                        <span class="d-block float-right small font-italic">Illustration by <a href="https://icons8.com/illustrations/author/5c07e68d82bcbc0092519bb6">Icons 8</a> from <a href="https://icons8.com/illustrations">Ouch!</a></span>
+                    </div>
+                </div>
+            </div>
         </section>
 
+        <footer class="justify-content-center d-flex border border-danger">
+            <div class="container row text-center mt-5 pt-5 border border-success">
+                <div class="col-lg-3 border border-primary col-md-6">
+                    <h2> Fuck </h2>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellendus quasi fuga nesciunt
+                    dolorum nulla magnam veniam sapiente, fugiat! Commodi sequi non animi ea dolor molestiae
+                    iste. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellendus quasi fuga nesciunt
+                    dolorum nulla magnam veniam sapiente, fugiat! Commodi sequi non animi ea dolor molestiae
+                    iste.
+                </div>
+
+                <div class="col-lg-3 border border-primary col-md-6">
+                    <h2> Fuck </h2>
+                    <p>Maths</p>
+                    <p>Maths</p>
+                    <p>Maths</p>
+                    <p>Maths</p>
+                </div>
+
+                <div class="col-lg-3 border border-primary col-md-6">
+                    <h2> Fuck </h2>
+                    <p>Maths</p>
+                    <p>Maths</p>
+                    <p>Maths</p>
+                    <p>Maths</p>
+                </div>
+
+                <div class="col-lg-3 border border-primary col-md-6">
+                    <h2> Fuck </h2>
+                    <p>Maths</p>
+                    <p>Maths</p>
+                    <p>Maths</p>
+                    <p>Maths</p>
+                </div>
+            </div>
+
+        </footer>
     </body>
 </html>
 

@@ -47,7 +47,7 @@
     transform: translateX(-50%);
     border-radius: 100%;
     position: absolute;
-    background: green;
+    background: #28a745;
     bottom: 5px;
     height: 6px;
     content: '';
@@ -105,8 +105,18 @@
     z-index: 1;
 }
 
+@media (max-width: 1024px){
+    .female-students{
+        height: 500px;
+    }
 
-@media (max-width: 992px){
+    .view{
+        height: 500px;
+    }
+
+}
+
+@media (max-width: 991px){
     .view{
         height: 500px;
     }
@@ -115,6 +125,18 @@
         height: 500px;
     }
 
+    .student {
+        height: 70px;
+        width: 70px;
+    }
+
+    .student-child{
+        height: 50px;
+        width: 50px;
+    }
+}
+
+@media (max-width: 767px){
     .header-image{
         display: none;
     }
@@ -122,25 +144,43 @@
     .collapse-bg{
         background-color: white;
     }
+}
 
-    .student{
-        display: none;
+@media (max-width: 650px){
+
+}
+
+@media (min-width: 370px) {
+    .subjects .col-sm-6 {
+        -ms-flex: 0 0 45%;
+        flex: 0 0 45%;
+        max-width: 45%;
+    }
+}
+@media (min-width: 768px) {
+    .subjects .col-md-4 {
+        -ms-flex: 0 0 30%;
+        flex: 0 0 30%;
+        max-width: 30%;
     }
 }
 
-
 @media (min-width: 992px){
-    .col-lg-2{
+    .subjects .col-lg-2, .col-2{
         -ms-flex: 0 0 13%;
         flex: 0 0 13%;
         max-width: 13%;
     }
 }
 
-
 @media (max-width: 575px){
     .autohide{
         padding: 1px 6px 1px 6px;
+    }
+
+    .subjects{
+        margin-left: 2px;
+        margin-right: 2px;
     }
 }
 
