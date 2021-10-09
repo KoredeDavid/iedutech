@@ -1,31 +1,9 @@
-
 .view{
     height: 100vh;
 }
 
 .header-gradient{
     background-image:radial-gradient(at top left, #e5e5e5 60%, white 3%);
-}
-
-@media (max-width: 992px){
-    .view{
-        height: 500px;
-    }
-
-    .header-image{
-        display: none;
-    }
-    .collapse-bg{
-        background-color: white;
-    }
-}
-
-@media (min-width: 992px){
-    .col-lg-2{
-        -ms-flex: 0 0 13%;
-        flex: 0 0 13%;
-        max-width: 13%;
-    }
 }
 
 .container{
@@ -38,12 +16,6 @@
     right: 6px;
     left: 6px;
     z-index: 1030;
-}
-
-@media (max-width: 575px){
-    .autohide{
-        padding: 1px 6px 1px 6px;
-    }
 }
 
 .scrolled-down{
@@ -75,7 +47,7 @@
     transform: translateX(-50%);
     border-radius: 100%;
     position: absolute;
-    background: green;
+    background: #28a745;
     bottom: 5px;
     height: 6px;
     content: '';
@@ -85,18 +57,142 @@
 
 .subjects-card{
     background-color: #e5e5e5;
-    height: 200px;
+    height: 220px;
     margin-bottom: 0.5rem;
     border-radius: 2rem;
-    transition: all 0.3s ease-in-out
+    transition: all 0.3s ease-in-out;
 }
 
 .subjects-card:hover{
     background-color: white;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
-    height: 220px;
+    height: 230px;
     transition: all 0.3s ease-in-out
 }
 
+.pitch-card{
+    background-color: #e5e5e5;
+    height: 110px;
+    margin-bottom: 0.5rem;
+    border-radius: 2rem;
+    transition: all 0.3s ease-in-out;
+}
 
+.pitch-card:hover{
+    background-color: white;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
+    height: 120px;
+    font-weight: bolder;
+    transition: all 0.3s ease-in-out
+}
+
+.female-students{
+    height: 100vh;
+    background-color: whitesmoke;
+}
+
+.student {
+    height: 100px;
+    width: 100px;
+}
+
+.student-child{
+    height: 70px;
+    width: 70px;
+}
+
+.student-text{
+    z-index: 1;
+}
+
+@media (max-width: 1024px){
+    .female-students{
+        height: 500px;
+    }
+
+    .view{
+        height: 500px;
+    }
+
+}
+
+@media (max-width: 991px){
+    .view{
+        height: 500px;
+    }
+
+    .female-students{
+        height: 500px;
+    }
+
+    .student {
+        height: 70px;
+        width: 70px;
+    }
+
+    .student-child{
+        height: 50px;
+        width: 50px;
+    }
+}
+
+@media (max-width: 767px){
+    .header-image{
+        display: none;
+    }
+
+    .collapse-bg{
+        background-color: white;
+    }
+}
+
+@media (max-width: 650px){
+    .student{
+        display: none;
+    }
+}
+
+@media (min-width: 370px) {
+    .subjects .col-sm-6 {
+        -ms-flex: 0 0 45%;
+        flex: 0 0 45%;
+        max-width: 45%;
+    }
+
+    .subjects .d-sm-block{
+        display: block !important;
+    }
+
+    .courses span{
+        display: none !important;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .subjects .col-md-4 {
+        -ms-flex: 0 0 30%;
+        flex: 0 0 30%;
+        max-width: 30%;
+    }
+}
+
+@media (min-width: 992px){
+    .subjects .col-lg-2, .col-2{
+        -ms-flex: 0 0 13%;
+        flex: 0 0 13%;
+        max-width: 13%;
+    }
+}
+
+@media (max-width: 575px){
+    .autohide{
+        padding: 1px 6px 1px 6px;
+    }
+
+    .subjects{
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+}
 
