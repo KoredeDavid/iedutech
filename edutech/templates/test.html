@@ -77,9 +77,9 @@
             </div>
         </header>
 
-        {# Couses #}
+        {# Courses #}
         <section class="mt-4">
-            <div class="container">
+            <div class="container courses">
                 <h2 class="font-weight-bold">Popular Subjects</h2>
                 <div class="row mt-2 justify-content-around subjects">
                     <div class="mr-md- col-sm-6 col-md-4 col-lg-2   subjects-card text-center pt-5 mb-md-2 ">
@@ -94,20 +94,20 @@
                         <h5 class="font-weight-normal">Maths</h5>
                         <i class="fas fa-ambulance d-block" style="font-size: 50px"></i>
                     </div>
-                    <div class="mr-md- col-sm-6 col-md-4 col-lg-2  subjects-card text-center pt-5 mb-md-2">
+                    <div class="mr-md- col-sm-6 col-md-4 col-lg-2  subjects-card text-center pt-5 mb-md-2 d-none d-sm-block">
                         <h5 class="font-weight-normal">Maths</h5>
                         <i class="fas fa-ambulance d-block" style="font-size: 50px"></i>
                     </div>
-                    <div class="mr-md- col-sm-6 col-md-4 col-lg-2  subjects-card text-center pt-5 mb-md-2">
+                    <div class="mr-md- col-sm-6 col-md-4 col-lg-2  subjects-card text-center pt-5 mb-md-2 d-none d-sm-block">
                         <h5 class="font-weight-normal">Maths</h5>
                         <i class="fas fa-ambulance d-block" style="font-size: 50px"></i>
                     </div>
-                    <div class="col-sm-6 col-md-4 col-lg-2  subjects-card text-center pt-5 mb-md-2">
+                    <div class="col-sm-6 col-md-4 col-lg-2  subjects-card text-center pt-5 mb-md-2 d-none d-sm-block">
                         <h5 class="font-weight-normal">Maths</h5>
                         <i class="fas fa-ambulance d-block" style="font-size: 50px"></i>
                     </div>
                 </div>
-                <span class="d-lg-none d-block float-right text-warning">View All</span>
+                <span class="d-block float-right text-warning">View All</span>
             </div>
 
             <div class="container pt-5">
@@ -169,17 +169,15 @@
         </section>
 
         <footer class="justify-content-center d-flex border border-danger">
-            <div class="container row text-center mt-5 pt-5 border border-success">
-                <div class="col-lg-3 border border-primary col-md-6">
+            <div class="container row text-center mt-5 pt-5 border border-success m-0">
+                <div class="col-lg-3 border border-primary col-sm-6 mb-2 mb-sm-0">
                     <h2> Fuck </h2>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellendus quasi fuga nesciunt
-                    dolorum nulla magnam veniam sapiente, fugiat! Commodi sequi non animi ea dolor molestiae
-                    iste. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellendus quasi fuga nesciunt
                     dolorum nulla magnam veniam sapiente, fugiat! Commodi sequi non animi ea dolor molestiae
                     iste.
                 </div>
 
-                <div class="col-lg-3 border border-primary col-md-6">
+                <div class="col-lg-3 border border-primary col-sm-6 mb-2 mb-sm-0">
                     <h2> Fuck </h2>
                     <p>Maths</p>
                     <p>Maths</p>
@@ -187,7 +185,7 @@
                     <p>Maths</p>
                 </div>
 
-                <div class="col-lg-3 border border-primary col-md-6">
+                <div class="col-lg-3 border border-primary col-sm-6 mb-2 mb-sm-0">
                     <h2> Fuck </h2>
                     <p>Maths</p>
                     <p>Maths</p>
@@ -195,15 +193,19 @@
                     <p>Maths</p>
                 </div>
 
-                <div class="col-lg-3 border border-primary col-md-6">
-                    <h2> Fuck </h2>
-                    <p>Maths</p>
-                    <p>Maths</p>
-                    <p>Maths</p>
-                    <p>Maths</p>
+                <div class="col-lg-3 border border-primary col-sm-6">
+                    <h2> Want to Talk to us?</h2>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
-
         </footer>
     </body>
 </html>
