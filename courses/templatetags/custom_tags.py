@@ -43,3 +43,31 @@ def zero_or_one(categories, value):
 def two_or_three(categories, value):
     if 2 <= categories.index(value) <= 3:
         return True
+
+
+@register.simple_tag
+def get_item(dictionary):
+    return dictionary['snippet']['topLevelComment']['snippet']
+
+
+@register.simple_tag
+def get_dict_details(dictionary, key):
+    return dictionary.get(key)
+
+
+@register.simple_tag
+def get_list_details(list_, item):
+    return list_[item]
+
+
+@register.filter
+def extract_date(value):
+    date, time = value.split('T')
+    return date
+
+
+@register.filter
+def separate_star(value):
+    separated = value.split('*')
+    return separated
+

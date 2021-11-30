@@ -23,7 +23,7 @@
 
 
     <body>
-{#        <div class="position-fixed fixed-bottom mb-0 text-center alert alert-warning">This website is being updated. It will be back soon </div>#}
+        <div class="position-fixed fixed-bottom mb-0 text-center alert alert-warning">This website is being updated. It will be back soon </div>
         <header class="header-gradient view d-flex align-items-center">
             {# Nav bar start #}
             <nav class="autohide navbar navbar-expand-md navbar-light mt-4  mx-auto  container rounded">
@@ -82,30 +82,12 @@
             <div class="container courses">
                 <h2 class="font-weight-bold">Popular Subjects</h2>
                 <div class="row mt-2 justify-content-around subjects">
-                    <div class="mr-md- col-sm-6 col-md-4 col-lg-2   subjects-card text-center pt-5 mb-md-2 ">
-                        <h5 class="font-weight-normal">Maths</h5>
-                        <i class="fas fa-ambulance d-block" style="font-size: 50px"></i>
-                    </div>
-                    <div class="mr-md- col-sm-6 col-md-4 col-lg-2  subjects-card text-center pt-5 mb-md-2 ">
-                        <h5 class="font-weight-normal">Chemistry</h5>
-                        <i class="fas fa-atom d-block" style="font-size: 50px"></i>
-                    </div>
-                    <div class="mr-md- col-sm-6 col-md-4 col-lg-2  subjects-card text-center pt-5 mb-md-2 ">
-                        <h5 class="font-weight-normal">Maths</h5>
-                        <i class="fas fa-ambulance d-block" style="font-size: 50px"></i>
-                    </div>
-                    <div class="mr-md- col-sm-6 col-md-4 col-lg-2  subjects-card text-center pt-5 mb-md-2 d-none d-sm-block">
-                        <h5 class="font-weight-normal">Maths</h5>
-                        <i class="fas fa-ambulance d-block" style="font-size: 50px"></i>
-                    </div>
-                    <div class="mr-md- col-sm-6 col-md-4 col-lg-2  subjects-card text-center pt-5 mb-md-2 d-none d-sm-block">
-                        <h5 class="font-weight-normal">Maths</h5>
-                        <i class="fas fa-ambulance d-block" style="font-size: 50px"></i>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-2  subjects-card text-center pt-5 mb-md-2 d-none d-sm-block">
-                        <h5 class="font-weight-normal">Maths</h5>
-                        <i class="fas fa-ambulance d-block" style="font-size: 50px"></i>
-                    </div>
+                    {% for course in courses %}
+                        <a class="text-decoration-none text-reset text-capitalize col-sm-6 col-md-4 col-lg-2   subjects-card text-center pt-5 mb-md-2 " href="/test-courses/{{ course.video_id }}">
+                            <h5 class="font-weight-normal">{{ course.name }}</h5>
+                            <i class="{{ course.icon}} d-block" style="font-size: 50px"></i>
+                        </a>
+                    {% endfor %}
                 </div>
                 <span class="d-block float-right text-warning">View All</span>
             </div>

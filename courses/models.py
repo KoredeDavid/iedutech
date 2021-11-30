@@ -4,20 +4,10 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.deconstruct import deconstructible
 from django.utils.translation import ugettext_lazy as _
-from django.core.validators import MinLengthValidator
+from django.core.validators import MinLengthValidator, RegexValidator
 
-
-@deconstructible
-class UnicodeUsernameValidator(validators.RegexValidator):
-    regex = r'^[\w]+\Z'
-    message = _(
-        'Enter a valid username. This value may contain only letters, '
-        'numbers, and underscore.'
-    )
-    flags = 0
-
-
-username_validator = UnicodeUsernameValidator()
+username_validator = RegexValidator(regex=r'^[\w]+\Z', message=_('Enter a valid username. Your name should only '
+                                                                 'letters, numbers and underscore.'), flags=0, )
 
 
 class CustomUser(AbstractUser):
@@ -33,35 +23,44 @@ class CustomUser(AbstractUser):
     )
     email = models.EmailField(_('email address'), blank=False, null=True, unique=True)
 
+    is_cleaned = False
+
     def clean(self):
-        self.username = self.username.capitalize()
-        self.email = self.email.lower()
-        self.display_name = self.username
+        self.is_cleaned = True
 
+        if self.email is not None:
+            self.email = self.email.lower()
 
-class Category(models.Model):
-    name = models.CharField(max_length=100, )
-    date_created = models.DateTimeField(auto_now_add=True)
+        # The reason for this custom validation is that, username field is case sensitive, which means you can have a
+        # user with username 'ana' and another one with 'Ana'. The validation below handles that problem.
+        if self.username is not None:
+            try:
+                get_username = CustomUser.objects.get(username__iexact=self.username)
+                print(get_username)
+            except CustomUser.DoesNotExist:
+                get_username = None
 
-    class Meta:
-        verbose_name_plural = 'Categories'
+            if get_username:
+                if get_username.id != self.id:
+                    raise ValidationError({'username': "User with this username already exists"})
 
-    def __str__(self):
-        return self.name
+    def save(self, *args, **kwargs):
+        if not self.is_cleaned:
+            self.full_clean()
+        super().save(*args, **kwargs)
 
 
 class Course(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100, )
-    about = models.TextField()
-
-    # enrolled = models.BooleanField(default=False)
+    name = models.CharField(max_length=100)
+    video_id = models.CharField(max_length=100, default='')
+    channel_id = models.CharField(max_length=100, default='')
+    icon = models.CharField(max_length=100, default='')
+    description = models.CharField(max_length=255, default='')
+    expectations = models.TextField(default='qwerty*qwerty')
+    requirements = models.TextField(default='qwerty*qwerty')
 
     def __str__(self):
-        return self.name + f' | {self.category} category'
-
-
-
+        return self.name
 
 
 class NewsLetter(models.Model):
@@ -70,5 +69,3 @@ class NewsLetter(models.Model):
 
     def clean(self):
         self.email = self.email.lower()
-
-
