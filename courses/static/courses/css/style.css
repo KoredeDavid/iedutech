@@ -20,12 +20,13 @@
 
 .scrolled-down{
     transform:translateY(-300%);
-    transition: all 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
 }
 
 .scrolled-up{
     transform:translateY(0);
-    transition: all 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+
 }
 
 .navbar {
@@ -53,6 +54,11 @@
     content: '';
     width: 6px;
     left: 50%;
+}
+
+.card-shadow{
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
+    border-radius: 4rem;
 }
 
 .subjects-card{
@@ -104,6 +110,35 @@
 .student-text{
     z-index: 1;
 }
+
+@media (min-width: 992px){
+    .enroll-card{
+        position: absolute;
+        top: 250px;
+        max-width: 400px;
+        transition: all 0.3s ease-in-out;
+    }
+
+
+    .fixed-enroll-card{
+        top: 150px;
+        position: fixed;
+        max-width: 400px;
+        transition: all 0.3s ease-in-out
+    }
+}
+
+
+.list-checkmark {
+    list-style: none;
+}
+
+.list-checkmark li:before {
+    content: '✓';
+    margin-right: 6px;
+}
+
+
 
 @media (max-width: 1024px){
     .female-students{

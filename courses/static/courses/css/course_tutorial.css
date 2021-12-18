@@ -1,0 +1,12 @@
+.course_tabs > .active{
+    color: #121416 !important;
+    border-bottom: 1px solid #ffc107 !important;
+    font-weight: 700 !important;
+}
+
+.nav-tabs{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+}

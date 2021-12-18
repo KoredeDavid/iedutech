@@ -1,0 +1,135 @@
+{% extends 'base/base.html' %}
+{% load custom_tags %}
+{% load humanize %}
+{% load static %}
+
+{% block title %}{% get_dict_details video_snippet 'title' %}{% endblock title%}
+
+{% block css %}
+    <link href="{% static '/courses/css/course_tutorial.css' %}" rel="stylesheet">
+{% endblock %}
+
+ {% block script %}
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script type="text/javascript" src="{% static '/courses/js/course_tutorial.js' %}"></script>
+ {% endblock %}
+
+
+
+{% block content %}
+    <header class="position-fixed bg-white fixed-top" style="z-index: 1234">
+        {# Nav bar start #}
+        <nav class="navbar navbar-expand-md navbar-light py-0 px-3 px-md-0 mx-auto container rounded border-warning border-bottom">
+            <a class="navbar-brand text-dark font-weight-bold" href="{% url 'home' %}" id="console">iEdutech</a>
+
+            <button class="navbar-toggler px-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                {#            <span class="navbar-toggler-icon"></span>#}
+                <i class="fas fa-bars h-25"></i>
+            </button>
+
+            <div class="collapse navbar-collapse p-0" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto align-items-ceter">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark " href="{% url 'home' %}#about">About</a>
+                    </li>
+                    <li class="nav-item ml-md-3">
+                        <a class="nav-link text-dark" href="{% url 'enrolled_courses' %}">Enrolled</a>
+                    </li>
+                    <li class="nav-item ml-md-3" >
+                        <a class="nav-link text-dark" href="{% url 'home' %}#courses"> Courses</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        {# Nav bar start #}
+    </header>
+
+    <section class="container small px-3 px-md-5">
+        <div class="col-lg-7 px-0">
+            <div class="position-fixed fixed-top mt-5 container px-0 px-md-5">
+                <div class="col-lg-7 px-0">
+                    <iframe class="w-100 border-0" height="315px" allowfullscreen="allowfullscreen"  src="https://www.youtube.com/embed/{{ video_id }}"></iframe>
+                    <ul class="nav nav-tabs border-bottom bg-white" id="myTab" role="tablist">
+                        <li class="nav-item course_tabs" role="presentation">
+                            <a class="nav-link text-muted active text-center" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+                        </li>
+                        <li class="nav-item course_tabs" role="presentation">
+                            <a class="nav-link text-muted text-center" id="comments-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="comments" aria-selected="false">Comments</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tab-content" id="myTabContent" style="margin-top: 430px">
+                <div class="tab-pane mb-3 fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h4>Description</h4>
+                    <h6 class="font-weight-bold">{% get_dict_details video_snippet 'title' %}</h6>
+                    <p>{{ youtube_course.description }}</p>
+
+                    <hr class="text-warning">
+
+                    <h4>Video Details</h4>
+                    <p class="d-inline mr-2 "><i class="far fa-thumbs-up text-warning"></i>{% get_dict_details video_statistics 'likeCount' as video_like_count%} {{video_like_count|intcomma}}</p>
+                    <p class="d-inline mr-2 "><i class="far fa-eye text-warning"></i>{% get_dict_details video_statistics 'viewCount' as video_view_count%} {{video_view_count|intcomma}}</p>
+                    <p class="d-inline mr-2 "><i class="far fa-comment text-warning"></i>{% get_dict_details video_statistics 'commentCount' as video_comment_count%} {{video_comment_count|intcomma}}</p>
+                    <br>
+                    <p>
+                        <a class="text-decoration-none text-dark" href="https://youtube.com/channel/{% get_dict_details video_snippet 'channelId' %}">
+                            Uploaded by <b>{% get_dict_details snippet 'title' %}</b> on Youtube <i class="fab fa-youtube mr-2 text-danger"></i>
+                        </a>
+                    </p>
+                    <p class="d-inline mr-2 "><i class="far fa-comment text-warning mr-2"></i>Date uploaded: {% get_dict_details video_snippet 'publishedAt' as video_publish_date %} {{ video_publish_date|extract_date}}</p>
+                    <p class="d-inline mr-2 "><i class="fas fa-language text-warning mr-2"></i>Language: {% get_dict_details video_snippet 'defaultAudioLanguage' as language %} {{ language|lower}}</p>
+
+                    <hr class="text-warning">
+
+                    <h4>Expectations</h4>
+                    <ul class="list-checkmark row px-0">
+                        {% for expectations in youtube_course.expectations|separate_star %}
+                            <li class="mt-1 col-xl-6 small">{{expectations}}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <hr class="text-warning">
+
+                    <h4>Availability</h4>
+                    <p>
+                        <a class="text-decoration-none text-dark" href="https://youtube.com/channel/{% get_dict_details video_snippet 'channelId' %}">
+                            Also on Youtube <i class="fab fa-youtube mr-1 text-danger"></i> <b>web & mobile</b>
+                        </a>
+                    </p>
+
+
+                    <hr class="text-warning">
+
+                    <h4>Channel</h4>
+                    <p class="mb-1"><a class="text-decoration-none text-dark font-weight-bold" href="https://youtube.com/channel/{% get_dict_details video_snippet 'channelId' %}"> {% get_dict_details snippet 'title' %}</a> </p>
+
+                    <div class="px-0 d-flex align-items-center">
+                        <img class="rounded-circle p-0  mr-1 border border-warning shadow" alt="Channel Image" src="{% get_dict_details channel_thumbnail_url 'url'%}"/>
+                        <div class="d-inline-block mt-2 small">
+                            <p class="mb-1"><i class="far fa-eye mr-2 text-warning"></i>{% get_dict_details statistics 'viewCount' as channel_view_count%} {{channel_view_count|intcomma}} views</p>
+                            <p class="mb-1"><i class="fab fa-youtube mr-2 text-warning"></i>{% get_dict_details statistics 'subscriberCount' as subscriber_count%} {{subscriber_count|intcomma}} subscribers</p>
+                            <p class="mb-1"><i class="fas fa-video mr-2 text-warning"></i>{% get_dict_details statistics 'videoCount' as video_count%} {{video_count|intcomma}} videos</p>
+                        </div>
+                    </div>
+
+                    <p class="mb-1">{% get_dict_details snippet 'description' %}videos</p>
+                </div>
+
+                <div class="tab-pane mb-3 fade" id="comments" role="tabpanel" aria-labelledby="comments">
+                    <button id="load_more" class="w-100 btn btn-warning text-dark">Load More</button>
+                    <div class="text-center">
+                        <div class="spinner-border d-none text-warning" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+                {% csrf_token %}
+                <input type="hidden" id="next_page_token" value="{{ next_page_token }}"/>
+                <input type="hidden" id="video_id" value="{{ video_id }}"/>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+

@@ -1,39 +1,54 @@
-{% extends 'base.html' %}
+{% extends 'base/base.html' %}
 {% load static %}
 {% load custom_tags %}
 
 {% block title %}Enrolled{% endblock %}
 
-{% block content %}
+{% block script %}
+    <script type="text/javascript" src="{% static '/courses/js/home.js' %}"></script>
+{% endblock script%}
 
-    <div class="text-center pb-3 bg-light" >
-        <b>ENROLLED</b>
-        <hr>
-    </div>
-    <div style="background:white">
-        {% for course in enrolled_courses %}
-            {% enrolled course as enrolled %}
-            <ul class="list-group pt-4 list-group-flush" style="background-color:gold">
-                <li class="list-group-item li zoom">
-                    <a  style="color:white;"  href="{% url 'course' course %}"> <b>{{enrolled}}</b></a>
-                </li>
-            </ul>
-        {% empty %}
-            <div class="row pt-4">
-                <div class="col-md-6 mx-auto">
-                    <div class="card mb-5  p-3 mx-auto " style="background:black">
-                        <div class="card-bod  border border-light p-3 text-center">
-                            <div class="d-flex justify-content-around ">
-                                <b class="text-center" style="color:white">You have not enrolled for any course yet.</b>
-                            </div>
-                            <div class='container' style="color:gold; text-align:centre;">
-                                <i class="fab fa-leanpub" style="font-size:100px;  display: inline-block"></i>
-                            </div>
+
+{% block content %}
+    <header class="mb-5 pb-4 pb-md-5">
+        {% include 'include temp/nav.html' %}
+    </header>
+
+    <div class="container">
+        <div class="row justify-content-start">
+            {% for course in enrolled_courses %}
+                {% get_video_details course as video_details %}
+                {% get_list_details video_details 0 as video_snippet%}
+
+                <div class="col-lg-3 col-sm-6 mt-4 border-bottom border-warning">
+                    <!-- Card -->
+                    <div class="card">
+                        <!-- Card image -->
+                        {% get_dict_details video_snippet 'thumbnails' as video_thumbnail %}
+                        {% get_dict_details video_thumbnail 'high' as  video_thumbnail_url %}
+                        <img class="card-img-top" src="{% get_dict_details video_thumbnail_url 'url' %}" alt="Card image cap">
+
+                        <!-- Card content -->
+                        <div class="card-body">
+                            <!-- Text -->
+                            <h6>{% get_dict_details video_snippet 'title' %}</h6>
                         </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% empty %}
+                <div class="col-lg-4 mb-5 col-sm-6 mt-4 border-bottom border-warning d-flex justify-content-center">
+                    <!-- Card -->
+                    <div class="card">
+                        <!-- Card content -->
+                        <div class="card-body">
+                            <!-- Text -->
+                            <h6>You've not enrolled for any course</h6>
+                            <a class="btn btn-warning text-dark" href="{% url 'home' %}#courses"> Courses</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
 {% endblock %}
