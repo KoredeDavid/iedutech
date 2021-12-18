@@ -3,21 +3,16 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.Index.as_view(), name='index'),
+    path('', views.Home.as_view(), name='home'),
 
-    # path('test-session/', views.test_session, name='test-session'),
-    # path('test-delete/', views.test_delete, name='test-delete'),
+    path('course/<video_id>', views.Courses.as_view(), name='video'),
 
-    path('course/<course_id>', views.Courses.as_view(), name='course'),
+    path('enroll-course/<video_id>', views.Enroll.as_view(), name='enroll'),
+    path('enrolled/', views.Enrolled.as_view(), name='enrolled_courses'),
 
-    path('favourites/<course_id>', views.Favourites.as_view(), name='favourites'),
-    path('bookmarked/', views.Bookmarked.as_view(), name='bookmarked'),
+    path('course-details/<video_id_>', views.CourseDetails.as_view(), name='course_details'),
+    path('course-tutorial/<video_id_>', views.CourseTutorial.as_view(), name='course_tutorial'),
 
-
-    path('enroll-course/<course_id>', views.Enroll.as_view(), name='enroll'),
-    path('enrolled/', views.Enrolled.as_view(), name='enrolled'),
-
-    path('test/', views.Test.as_view(), name='test'),
-    path('test-courses/<video_id_>', views.TestCourses.as_view(), name='test_courses')
+    path('get-comments', views.GetComments.as_view(), name='get_comments')
 
 ]

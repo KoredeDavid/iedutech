@@ -34,7 +34,6 @@ window.onload = function (){
 
         }
 
-
         Utils.prototype = {
             constructor: Utils,
             isElementInView: function (element, fullyInView) {
@@ -46,7 +45,6 @@ window.onload = function (){
                 if (fullyInView === true) {
                     return ((pageTop < elementTop) && (pageBottom > elementBottom));
                 } else {
-                    console.log(elementTop, pageBottom, elementBottom, pageTop)
                     if ($(element).hasClass('fixed-enroll-card')){
                         return pageTop === 0;
                     }else{
@@ -64,14 +62,45 @@ window.onload = function (){
         if (!isElementInView) {
             got.classList.remove("enroll-card")
             got.classList.add("fixed-enroll-card")
-            console.log('out of view');
         } else {
             got.classList.add("enroll-card")
             got.classList.remove("fixed-enroll-card")
-            console.log('in view');
         }
 
     }
 
+
+    var enroll = $('.enroll')
+    var video_id = $('#video_id').attr('value')
+    var loc = window.location
+    var http = 'http://'
+    if (loc.protocol == 'https:'){
+        http = 'https://'
+    }
+    var endpoint = http + loc.host
+
+    enroll.click(function(){
+        $.ajax({
+            url: `${endpoint}/enroll-course/${video_id}`,
+            data: {
+                csrfmiddlewaretoken: Cookies.get('csrftoken'),
+            },
+            type: 'post',
+            dataType: 'json',
+            beforeSend: function () {
+                enroll.toggleClass("d-none")
+                $(".spinner-border").toggleClass("d-none")
+            },
+            success: function (data) {
+                $(".spinner-border").addClass("d-none")
+                $(".go_to_course").removeClass("d-none")
+            },
+            error: function(xhr, status, error) {
+                enroll.removeClass("d-none")
+                $(".spinner-border").addClass("d-none")
+                enroll.html('Error!!!. Load Again')
+            }
+        });
+    });
 };
 

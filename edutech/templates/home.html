@@ -1,0 +1,115 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+
+{% block title %}iEdutech{% endblock %}
+
+
+{% block script %}
+    <script type="text/javascript" src="{% static '/courses/js/home.js' %}"></script>
+{% endblock script %}
+
+
+{% block content %}
+    <header class="header-gradient view d-flex align-items-center">
+        {# Nav bar start #}
+            {% include 'include temp/nav.html' %}
+        {# Nav bar start #}
+
+        <div class="container pt-5" id="about">
+            <div class="row align-items-center justify-content-end">
+                <div class="col-md-6 text-center">
+                    <h1 class="font-weight-bold mt-sm-5">Learn with iEdutech</h1>
+                    <hr>
+                    <h6 class="mb-4">
+                        With cool and free courses selected from Youtube <i class="fab fa-youtube mr-2 text-danger"></i>,
+                        which are easy to understand and well explained by its respective tutors.
+                        Learn something new today 🚀
+                    </h6>
+                    <a class="btn btn-warning text-dark" href="#courses"> Courses</a>
+                </div>
+                <div class="col-md-6 header-image">
+                    <img src="https://ouch-cdn2.icons8.com/1dKnfM6sKzWVuW5vAb9afWnRxPL6L6idUzEn8sjmYmc/rs:fit:912:912/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvMzIy/LzE1YTY5YjYzLTFj/NjUtNGZhMi1hM2Uz/LTVjYTY5MTQzNjk3/Ni5zdmc.png" alt="" class="img-fluid">
+                    <span class="d-block float-right small font-italic">Illustration by <a href="https://icons8.com/illustrations/author/5c07e68d82bcbc0092519bb6">Icons 8</a> from <a href="https://icons8.com/illustrations">Ouch!</a></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {# Courses #}
+    <section class="mt-4">
+        <div class="container courses" id="courses">
+            <h2 class="font-weight-bold">Popular Subjects</h2>
+            <div class="row mt-2 justify-content-around subjects">
+                {% for course in courses %}
+                    <a class="text-decoration-none text-reset text-capitalize col-sm-6 col-md-4 col-lg-2 {% if forloop.counter > courses|length|add:"-3" %} d-none d-sm-block{% endif %}  subjects-card text-center pt-5 mb-md-2 " href="{% url 'course_details' course.video_id %}">
+                        <h5 class="font-weight-normal">{{ course.name }}</h5>
+                        <i class="{{ course.icon}} d-block" style="font-size: 50px"></i>
+                    </a>
+                {% endfor %}
+            </div>
+            <span class="d-block float-right text-warning">View All</span>
+        </div>
+
+        <div class="container pt-5">
+            <div class="row d-flex align-items-center">
+                <div class="col-md-6 header-image">
+                    <img src="https://ouch-cdn2.icons8.com/blUtBGaYi6OyEcO77Rckq6lRzXbzUG5C5a2KJ02rMmc/rs:fit:978:912/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNTcy/Lzg4MWFmMjMyLWY3/ODUtNDIyZi1iM2Iy/LWQzYjAyMDc0YzM5/MS5wbmc.png" alt="" class="img-fluid">
+                    <span class="d-block float-left small font-italic">Illustration by <a href="https://icons8.com/illustrations/author/5c07e68d82bcbc0092519bb6">Icons 8</a> from <a href="https://icons8.com/illustrations">Ouch!</a></span>
+                </div>
+
+                <div class="col-md-6">
+                    <h1 class="font-weight-bold mt-sm-5">How to Join</h1>
+                    <h4 class="pitch-card d-flex align-items-center pl-4">Click on a Course 🔖</h4>
+                    <h4 class="pitch-card d-flex align-items-center pl-4">Enroll for Free!!! 🎒</h4>
+                    <h4 class="pitch-card d-flex align-items-center pl-4">Start Learning 🤓</h4>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="female-students position-relative d-flex align-items-center justify-content-center">
+            <div class="rounded-circle student d-flex align-items-center justify-content-center position-absolute bg-warning" style="top:70px; left: 70px;">
+                <div class="rounded-circle student-child" style="background: whitesmoke"></div>
+            </div>
+            <div class="border border-primary rounded-circle student position-absolute shadow" style="top:75px; left: 400px"></div>
+            {#                <img src="https://cdn.pixabay.com/photo/2016/11/21/12/42/beard-1845166__340.jpg" class="border border-primary rounded-circle student position-absolute shadow"  alt="" style="top:75px; left: 400px">#}
+            <div class="border border-primary rounded-circle student position-absolute shadow" style="top:75px; right: 300px"></div>
+
+            <div class="rounded-circle student d-flex align-items-center justify-content-center position-absolute bg-success" style="bottom:75px; right: 40px">
+                <div class="rounded-circle student-child" style="background: whitesmoke"></div>
+            </div>
+            <div class="border border-primary rounded-circle student position-absolute shadow" style="bottom:200px; left: 50px"></div>
+            <div class="border border-primary rounded-circle student position-absolute shadow" style="bottom:75px; left: 400px"></div>
+            <div class="border border-primary rounded-circle student position-absolute shadow" style="bottom:300px; right: 40px"></div>
+            <div class="border border-primary rounded-circle student position-absolute shadow" style="bottom:75px; right: 400px"></div>
+
+            <div class="text-center student-text">
+                <h2 class="font-weight-bolder">Several Topics, One Source</h2>
+                <p> Learn something new today 🚀  </p>
+                <a class="btn btn-warning text-dark" href="#courses"> Courses</a>
+            </div>
+        </div>
+
+        <div class="container py-5">
+            <div class="row align-items-center justify-content-end">
+                <div class="col-md-6 text-center">
+                    <h1 class="font-weight-bold mt-sm-5">Learn from Youtube <i class="fab fa-youtube mr-2 text-danger"></i> with iEdutech </h1>
+                    <hr>
+                    <h6 class="mb-4">
+                        🚀 🎒 🤓 🔖
+                    </h6>
+                    <a class="btn btn-warning text-dark" href="#courses"> Courses</a>
+                </div>
+                <div class="col-md-6 header-image">
+                    <img src="https://ouch-cdn2.icons8.com/Co-9JYQIgeb9aS2Iu5HO4XpA5hReIz_RDqGZtp31HkA/rs:fit:784:399/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvODY4/LzE3OGRjMTFjLTEy/YjctNGUxZS1hY2E2/LTBhOTI2NTM5Nzlj/Ny5wbmc.png" alt="" class="img-fluid">
+                    <span class="d-block float-right small font-italic">Illustration by <a href="https://icons8.com/illustrations/author/5c07e68d82bcbc0092519bb6">Icons 8</a> from <a href="https://icons8.com/illustrations">Ouch!</a></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
+
+

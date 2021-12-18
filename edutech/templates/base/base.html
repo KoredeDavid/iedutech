@@ -1,0 +1,85 @@
+{% load static %}
+{% load custom_tags %}
+{% load humanize %}
+{% load static %}
+
+
+{% get_list_details channel_details 0 as snippet%}
+{% get_list_details channel_details 1 as statistics%}
+{% get_dict_details snippet 'thumbnails' as channel_thumbnail %}
+{% get_dict_details channel_thumbnail 'default' as channel_thumbnail_url %}
+
+{% get_list_details video_details 0 as video_snippet%}
+{% get_list_details video_details 1 as video_statistics%}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>{% block title %}{% endblock %}</title>
+
+        <link href="{% static '/courses/css/bootstrap.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+        <!-- Google Fonts -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet"/>
+        <!-- MDB -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+        <link href="{% static '/courses/css/style.css' %}" rel="stylesheet">
+
+        <script type="text/javascript" src="{% static '/courses/js/jquery-3.5.1.js' %}"></script>
+        <script type="text/javascript" src="{% static '/courses/js/bootstrap.js' %}"></script>
+        {% block script %}{% endblock script %}
+        {% block css %}{% endblock css %}
+    </head>
+
+
+    <body>
+        {% block content %}{% endblock content %}
+
+        <footer class="justify-content-center bg-dark text-white small w-100 pb-3 d-flex position-relative" style="z-index: 1234;">
+            {% courses as courses %}
+            <div class="container row text-center mt-5 pt-3  m-0">
+                <div class="col-lg-3 col-sm-6 mb-2 mb-sm-0 p-2">
+                    <h2> iEdutech </h2>
+                    These Courses are gotten from and are owned by Youtube <i class="fab fa-youtube mr-2 text-danger"></i>.
+                    So if you have any problem reach out to them🙂
+                </div>
+
+                <div class="col-lg-3 col-sm-6 mb-2 p-2 mb-sm-0">
+                    <h2> Courses </h2>
+                    {% for course in courses %}
+                        {% if forloop.counter <= courses|length|add:"-3" %}
+                            <p><a class="text-decoration-none text-white" href="{% url 'course_details' course.video_id %}">{{ course.name }}</a></p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <div class="col-lg-3 col-sm-6 mb-2 p-2 mb-sm-0">
+                    <h2> Courses </h2>
+                    {% for course in courses %}
+                        {% if forloop.counter > courses|length|add:"-3" %}
+                            <p><a class="text-decoration-none text-white" href="{% url 'course_details' course.video_id %}">{{ course.name }}</a></p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <div class="col-lg-3 col-sm-6 p-2">
+                    <h2> Want to Talk to us?</h2>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                {#                <h6 class="p-0 m-0 mt-5 font-italic"><a class="text-decoration-none text-dark" href="">👑KoredeDavid</a></h6>#}
+            </div>
+        </footer>
+    </body>
+</html>
