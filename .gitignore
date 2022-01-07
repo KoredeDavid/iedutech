@@ -60,7 +60,6 @@ coverage.xml
 local_settings.py
 db.sqlite3
 edutech/settings.py
-edutech/courses/migrations
 db.sqlite3-journal
 
 
@@ -112,6 +111,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+eduenv/
 
 # Spyder project settings
 .spyderproject

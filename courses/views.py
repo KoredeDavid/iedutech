@@ -11,7 +11,7 @@ from django.views import View
 from .forms import NewsLetterForm
 from .models import Course
 
-youtube_api_key = "AIzaSyAPImkfCCrwHl5sjC_Zg-U0BE6Qvh35iW8"
+youtube_api_key = os.environ.get('YOUTUBE_API_KEY')
 url = "https://www.googleapis.com/youtube/v3"
 
 
