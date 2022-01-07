@@ -24,6 +24,7 @@ DATABASES = {
     }
 }
 
+# Allows error log to be shown in console when Debug = False
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
