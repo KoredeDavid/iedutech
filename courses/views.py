@@ -46,64 +46,6 @@ def channel_details_url(channel_id):
     return channel_details
 
 
-# class Index(View):
-#     def get(self, request):
-#         pass
-#     global res
-#     form = NewsLetterForm()
-#     categories = list(Category.objects.all())
-#     favourites = request.session.get('favourites', [])
-#     print(favourites)
-#     context = {
-#         'categories': categories,
-#         'favourites': favourites,
-#         'form': form
-#     }
-#     return render(request, 'index.html', context)
-#
-# def post(self, request):
-#     form = NewsLetterForm(request.POST)
-#     categories = list(Category.objects.all())
-#     favourites = request.session.get('favourites', [])
-#     context = {
-#         'categories': categories,
-#         'favourites': favourites,
-#         'form': form
-#     }
-#     if form.is_valid():
-#         name = form.cleaned_data['name']
-#         email = form.cleaned_data['email']
-#         form.save()
-#         subject = 'KoredeDavid from EduTech'
-#         message = f'Hi {name.capitalize()}, I just want to say thank you for signing up for our News Letter. We ' \
-#                   f'are committed to serving you with  our latest gist '
-#         if os.environ.get('DJANGO_ENV', '') == 'production':
-#             email_from = os.environ.get('EMAIL_HOST_USER', '')
-#         else:
-#             email_from = 'test@email.com'
-#         recipient_list = [email, ]
-#         send_mail(subject, message, email_from, recipient_list, )
-#         messages.success(request, f'Thank you {name.capitalize()}')
-#         return redirect('/#news')
-#     return render(request, 'index.html', context)
-
-class Courses(View):
-    def get(self, request, video_id):
-        try:
-            course = Course.objects.get(id=video_id)
-        except Course.DoesNotExist:
-            raise Http404('This course does not exist')
-
-        enrolled_courses = request.session.get('enrolled_courses', [])
-
-        context = {
-            'course': course,
-            'category': str(course.category),
-            'enrolled_courses': enrolled_courses
-        }
-        return render(request, 'course.html', context)
-
-
 class Enroll(View):
     def post(self, request, video_id):
         enrolled_courses = request.session.get('enrolled_courses', [])
