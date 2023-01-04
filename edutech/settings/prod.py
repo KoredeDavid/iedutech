@@ -13,25 +13,25 @@ ALLOWED_HOSTS = ['iedutech.up.railway.app', 'iedutech.herokuapp.com', '127.0.0.1
 MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware', )
 
 # DATABASE settings uses sqlite when sqlite is set to true but uses Postgres if not
-if os.environ.get('DATABASE', 'sqlite') == 'sqlite':
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
+# if os.environ.get('DATABASE', 'sqlite') == 'sqlite':
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('DBNAME', ''),
-            'USER': os.environ.get('DBUSER', ''),
-            'PASSWORD': os.environ.get('DBPASS', ''),
-            'HOST': os.environ.get('DBHOST', ''),
-            'PORT': os.environ.get('DBPORT', ''),
-
-        }
     }
+# else:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql',
+#             'NAME': os.environ.get('DBNAME', ''),
+#             'USER': os.environ.get('DBUSER', ''),
+#             'PASSWORD': os.environ.get('DBPASS', ''),
+#             'HOST': os.environ.get('DBHOST', ''),
+#             'PORT': os.environ.get('DBPORT', ''),
+#
+#         }
+#     }
 
 # Allows error log to be shown in console when Debug = False
 LOGGING = {
