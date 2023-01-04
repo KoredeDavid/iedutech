@@ -31,7 +31,7 @@
                         <!-- Card content -->
                         <div class="card-body">
                             <!-- Text -->
-                            <h6>{% get_dict_details video_snippet 'title' %}</h6>
+                            <h6><a href="{% url 'course_details' course %}">{% get_dict_details video_snippet 'title' %}</a></h6>
                         </div>
                     </div>
                 </div>

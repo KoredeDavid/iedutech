@@ -1,4 +1,4 @@
-<nav class="autohide navbar navbar-expand-md navbar-light mt-4  mx-auto  container rounded">
+<nav class="autohide navbar navbar-expand-md navbar-light mt-4  mx-auto  container rounded shadow-0 ">
     <a class="navbar-brand text-dark font-weight-bold nav-dot" href="{% url 'home' %}">iEdutech</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,13 +9,13 @@
     <div class="collapse navbar-collapse p-0" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link text-dark " href="{% url 'home' %}#about">About</a>
+                <a class="nav-link text-dark font-weight-bold" href="{% url 'home' %}#about">ABOUT</a>
             </li>
             <li class="nav-item ml-md-3">
-                <a class="nav-link text-dark" href="{% url 'enrolled_courses' %}">Enrolled</a>
+                <a class="nav-link text-dark font-weight-bold" href="{% url 'enrolled_courses' %}">ENROLLED</a>
             </li>
             <li class="nav-item ml-md-3" >
-                <a class="btn btn-warning text-dark" href="{% url 'home' %}#courses"> Courses</a>
+                <a class="btn btn-warning text-dark shadow-0 font-weight-bold" href="{% url 'home' %}#courses"> COURSES</a>
             </li>
         </ul>
     </div>
