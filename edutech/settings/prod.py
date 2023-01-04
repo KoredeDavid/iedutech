@@ -12,7 +12,8 @@ ALLOWED_HOSTS = ['iedutech.up.railway.app', 'iedutech.herokuapp.com', '127.0.0.1
 
 MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware', )
 
-# DATABASE settings uses sqlite when sqlite is set to true but uses Postgres if not
+BASE_DIR = os.getcwd()
+
 # DATABASE settings uses sqlite when sqlite is set to true but uses Postgres if not
 sqlite = True
 
