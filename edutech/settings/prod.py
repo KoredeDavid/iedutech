@@ -1,5 +1,7 @@
 from .base import *
 
+BASE_DIR = os.getcwd()
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.environ.get('DEBUG', False) == 'True' else False
 
@@ -12,10 +14,9 @@ ALLOWED_HOSTS = ['iedutech.up.railway.app', 'iedutech.herokuapp.com', '127.0.0.1
 
 MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware', )
 
-BASE_DIR = os.getcwd()
 
 # DATABASE settings uses sqlite when sqlite is set to true but uses Postgres if not
-sqlite = True
+sqlite = os.environ.get('DATABASE', 'sqlite') == 'sqlite'
 
 if sqlite:
     DATABASES = {
@@ -27,12 +28,12 @@ if sqlite:
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            # 'NAME': '',
-            # 'USER': 'postgres',
-            'PASSWORD': '',
-            'HOST': '127.0.0.1',
-            'PORT': '5432',
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get('DBNAME'),
+            'USER': os.environ.get('DBUSER'),
+            'PASSWORD': os.environ.get('DBPASS'),
+            'HOST': os.environ.get('DBHOST'),
+            'PORT': os.environ.get('DBPORT'),
         }
     }
 
